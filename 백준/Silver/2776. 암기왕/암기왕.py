@@ -1,0 +1,13 @@
+from collections import Counter
+t = int(input())
+for i in range(t):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    m = int(input())
+    arr2 = list(map(int,input().split()))
+
+    arr3 = Counter(arr)
+
+    for i in arr2:
+        if i in arr3: print(1)
+        else: print(0)
