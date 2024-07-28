@@ -6,9 +6,9 @@ using namespace std;
 int main() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
-	int n;
+	long long int n;
 	cin >> n;
-	int* arr = new int[n + 1];
+	long long int* arr = new long long int[n + 1];
 	if (n == 0) {
 		cout << 0;
 		return 0;
