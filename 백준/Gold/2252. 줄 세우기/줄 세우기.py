@@ -1,32 +1,30 @@
 import sys
-from collections import deque
 input = sys.stdin.readline
+from collections import deque
 
 n,m = map(int,input().split())
-graph = deque([deque([]) for i in range(n)])
 
-indgree = [0 for i in range(n)]
+node = [0] * (n)
 
+lis = [[] for i in range(n)]
 for i in range(m):
-    num1,num2 = map(int,input().split())
-    num1 -= 1
-    num2 -= 1
-    graph[num1].append(num2)
-    indgree[num2] += 1
-queue = deque([])
+    n1,n2 = map(int,input().split())
+    n1 -= 1
+    n2 -= 1
+    node[n2] += 1
+    lis[n1].append(n2)
 
-for i in range(len(graph)):
-    if not indgree[i]:
+queue = deque()
+
+for i in range(n):
+    if node[i] == 0 :
         queue.append(i)
-
-result = []
-
+answer = []
 while(queue):
-    a = queue.popleft()
-    result.append(a+1)
-    for i in graph[a]:
-        indgree[i] -= 1
-        if not indgree[i]:
+    s = queue.popleft()
+    answer.append(s+1)
+    for i in lis[s]:
+        node[i] -= 1
+        if node[i] == 0:
             queue.append(i)
-
-print(*result)
+print(*answer)
